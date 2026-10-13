@@ -4,9 +4,9 @@
 
 Buscamos colaboración de personas usuarias, familias, docentes, terapeutas de lenguaje, diseñadores y desarrolladores. La experiencia debe respetar la edad, intereses y decisiones de cada persona.
 
-## Estado: v0.1.0 · prototipo funcional
+## Estado: v0.1.1 · prototipo funcional
 
-Incluye mensajes con voz, frases personalizadas, rutina diaria, expresión de emociones y actividades breves de números, cocina, mascotas y ritmo. Funciona en navegador y se puede instalar como PWA en Android compatible.
+Incluye mensajes con voz, frases personalizadas, rutina diaria, expresión de emociones y actividades breves de números, cocina, mascotas y ritmo. Funciona en navegador y se puede instalar como PWA en Android, iPhone e iPad compatibles.
 
 **No es un tratamiento médico ni una herramienta de diagnóstico. No promete curar el síndrome de Down ni otras condiciones.** El prototipo no tiene validación clínica ni educativa; los conteos de actividades no miden capacidad ni aprendizaje.
 
@@ -19,6 +19,14 @@ python3 -m http.server 8000 --directory dist
 ```
 
 Abrir http://localhost:8000. Para acceder desde otro dispositivo y usar service workers se necesita HTTPS; HTTP en una IP de la red no equivale a localhost.
+
+## Instalar en iPhone, iPad y tablets
+
+**iPhone/iPad:** abrir el sitio HTTPS en Safari → Compartir → Añadir a pantalla de inicio. Activar «Abrir como app web» si aparece y tocar Añadir. No requiere App Store.
+
+**Android/tablets Android:** seguir las instrucciones de Chrome siguientes.
+
+La interfaz contempla áreas seguras, orientación horizontal y ventanas estrechas. La compatibilidad implementada no equivale a pruebas físicas completadas. Ver [pruebas pendientes](docs/COMPATIBILIDAD.md).
 
 ## Instalar en Android
 
