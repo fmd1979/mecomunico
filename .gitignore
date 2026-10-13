@@ -1,0 +1,6 @@
+.openai/
+.env*
+node_modules/
+*-respaldo.json
+*.tar.gz
+*.zip

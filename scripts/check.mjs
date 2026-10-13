@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+const html=fs.readFileSync('dist/index.html','utf8');
+const script=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+if(!script)throw new Error('No application script');
+new vm.Script(script);new vm.Script(fs.readFileSync('dist/sw.js','utf8'));
+const manifest=JSON.parse(fs.readFileSync('dist/manifest.webmanifest','utf8'));
+if(manifest.display!=='standalone'||manifest.start_url!=='./')throw new Error('Unexpected PWA settings');
+for(const icon of manifest.icons)if(!fs.existsSync('dist/'+icon.src))throw new Error('Missing icon '+icon.src);
+if(!html.includes('lang="es"'))throw new Error('Missing language');
+console.log('Syntax, PWA manifest and icon files: OK. Manual device testing remains required.');
