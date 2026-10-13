@@ -4,9 +4,9 @@
 
 Buscamos colaboración de personas usuarias, familias, docentes, terapeutas de lenguaje, diseñadores y desarrolladores. La experiencia debe respetar la edad, intereses y decisiones de cada persona.
 
-## Estado: v0.1.1 · prototipo funcional
+## Estado: v0.2.0 · prototipo funcional
 
-Incluye mensajes con voz, frases personalizadas, rutina diaria, expresión de emociones y actividades breves de números, cocina, mascotas y ritmo. Funciona en navegador y se puede instalar como PWA en Android, iPhone e iPad compatibles.
+Incluye página de presentación e historia, editor local de actividades, mensajes con voz, frases personalizadas, rutina diaria, expresión de emociones y actividades breves de números, cocina, mascotas y ritmo. Funciona en navegador y se puede instalar como PWA en Android, iPhone e iPad compatibles.
 
 **No es un tratamiento médico ni una herramienta de diagnóstico. No promete curar el síndrome de Down ni otras condiciones.** El prototipo no tiene validación clínica ni educativa; los conteos de actividades no miden capacidad ni aprendizaje.
 
@@ -18,7 +18,7 @@ No requiere dependencias de producción ni proceso de compilación.
 python3 -m http.server 8000 --directory dist
 ```
 
-Abrir http://localhost:8000. Para acceder desde otro dispositivo y usar service workers se necesita HTTPS; HTTP en una IP de la red no equivale a localhost.
+Abrir http://localhost:8000 para el proyecto y http://localhost:8000/app.html para la app. Para acceder desde otro dispositivo y usar service workers se necesita HTTPS; HTTP en una IP de la red no equivale a localhost.
 
 ## Instalar en iPhone, iPad y tablets
 
@@ -33,6 +33,8 @@ La interfaz contempla áreas seguras, orientación horizontal y ventanas estrech
 Abrir el sitio HTTPS en Chrome y seleccionar **Instalar aplicación** o **Añadir a pantalla principal**. Después de una primera carga correcta, el service worker guarda recursos para uso sin conexión. Verificar en el dispositivo: la voz depende del navegador y de las voces del sistema.
 
 ## Publicar
+
+Guía paso a paso: [servidor cPanel o Debian/Nginx](docs/SERVIDOR.md). [Crear actividades](docs/ACTIVIDADES.md). [Preparar donaciones](docs/DONACIONES.md).
 
 Se puede servir `dist/` en cualquier hosting estático HTTPS. Para GitHub Pages: configurar publicación desde rama `main`, carpeta raíz, y copiar el contenido de `dist/` a esa raíz; o usar un workflow propio que publique `dist/`. La configuración privada de Sites no forma parte de este repositorio.
 

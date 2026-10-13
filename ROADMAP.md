@@ -24,3 +24,7 @@
 - Evaluación participativa con familias, docentes y usuarios, con consentimiento y privacidad.
 
 No se incluye reconocimiento automático de emociones ni calificación obligatoria de pronunciación.
+
+## Incorporado en v0.2.0
+
+Página del proyecto, editor local de preguntas de selección y guía de hosting. Pendiente: catálogo compartido con revisión, ejercicios de otros tipos y canal de donaciones verificado.
