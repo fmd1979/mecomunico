@@ -1,5 +1,5 @@
-const CACHE='mecomunico-v0.2.1';
-const ASSETS=['./','./index.html','./app.html','./activities.js','./voice.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
+const CACHE='mecomunico-v0.2.2';
+const ASSETS=['./','./index.html','./app.html','./activities.js','./voice.js','./install.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 // Reconstruct redirected responses before caching: some hosts canonicalize app.html to /app.
 function cacheable(r){return new Response(r.clone().body,{status:r.status,statusText:r.statusText,headers:r.headers})}
 self.addEventListener('install',e=>e.waitUntil((async()=>{const c=await caches.open(CACHE);for(const path of ASSETS){const r=await fetch(new Request(new URL(path,self.registration.scope),{cache:'reload',redirect:'follow'}));if(!r.ok)throw Error('Asset unavailable '+path);await c.put(new URL(path,self.registration.scope),cacheable(r))}await self.skipWaiting()})()));
