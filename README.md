@@ -4,7 +4,7 @@
 
 Buscamos colaboración de personas usuarias, familias, docentes, terapeutas de lenguaje, diseñadores y desarrolladores. La experiencia debe respetar la edad, intereses y decisiones de cada persona.
 
-## Estado: v0.2.0 · prototipo funcional
+## Estado: v0.2.1 · prototipo funcional
 
 Incluye página de presentación e historia, editor local de actividades, mensajes con voz, frases personalizadas, rutina diaria, expresión de emociones y actividades breves de números, cocina, mascotas y ritmo. Funciona en navegador y se puede instalar como PWA en Android, iPhone e iPad compatibles.
 
@@ -71,3 +71,7 @@ Comprueba sintaxis, manifest e iconos. No sustituye pruebas reales de interacci�
 MIT para el código y recursos propios incluidos. Los emojis se renderizan con las fuentes del dispositivo; no se distribuyen ilustraciones de terceros. Nuevos recursos deben declarar autoría y licencias compatibles.
 
 Iniciativa de Franklin Moya / SiteEcuador. Se aceptan aportes de la comunidad.
+
+## Voces
+
+Selección de perfiles y voces desde Familia: [guía de voces](docs/VOCES.md). Verificación adicional: `node scripts/check-voice.mjs`.

@@ -1,0 +1,11 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
+let spoken;const elements={family:{}};const synth={getVoices:()=>[{name:'Español',voiceURI:'a',lang:'es-EC',default:true},{name:'Otra voz',voiceURI:'b',lang:'es-ES'}],cancel(){},speak(u){spoken=u}};
+const context={state:{sound:true},window:{speechSynthesis:synth},SpeechSynthesisUtterance:class {constructor(t){this.text=t}},family(){},say(){},$:id=>elements[id],alert(){},console};vm.createContext(context);vm.runInContext(fs.readFileSync('dist/voice.js','utf8'),context);
+vm.runInContext(`state.voiceSettings=cleanVoiceSettings({profile:'female',bindings:{female:'b'},rate:.65,pitch:1});say('Hola')`,context);assert.equal(spoken.voice.voiceURI,'b');assert.equal(spoken.rate,.65);assert.equal(spoken.pitch,1);
+vm.runInContext(`state.voiceSettings.bindings.female='missing';say('Otra')`,context);assert.equal(spoken.voice.voiceURI,'a');
+vm.runInContext(`state.voiceSettings=cleanVoiceSettings({profile:'boy'});say('Hola')`,context);assert.equal(spoken.pitch,1,'Child profile must not fake a child voice by changing pitch');
+assert.equal(vm.runInContext(`cleanVoiceSettings({profile:'invalid',rate:99,pitch:-4}).profile`,context),'auto');assert.equal(vm.runInContext(`cleanVoiceSettings({rate:99}).rate`,context),1.3);
+spoken=null;vm.runInContext(`state.sound=false;say('Silencio')`,context);assert.equal(spoken,null);vm.runInContext(`speakConfigured('Muestra',state.voiceSettings,true)`,context);assert.ok(spoken);
+synth.getVoices=()=>[];assert.equal(vm.runInContext(`chooseVoice(state.voiceSettings,availableSpanishVoices())`,context),null);
+const swContext={Response};vm.createContext(swContext);const sw=fs.readFileSync('dist/sw.js','utf8');vm.runInContext(sw.match(/function cacheable\(r\)\{[^\n]+/)[0],swContext);const response=await fetch('data:text/plain,OK');swContext.original=response;const reconstructed=vm.runInContext('cacheable(original)',swContext);assert.equal(await reconstructed.text(),'OK');assert.equal(reconstructed.redirected,false);
+console.log('Voice preference, fallback, limits, mute, preview and cache response reconstruction: OK');
